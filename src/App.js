@@ -137,9 +137,9 @@ const App = () => {
   return (
     <Grommet theme={theme} full>
       <Box background="black" pad="medium" fill>
-        <Box direction="row-responsive" justify="between">
-          <Box basis="3/4" direction="row-responsive" justify="between" height="auto">
-            <Box pad="xsmall" basis="small">
+        <Box direction="row-responsive">
+          <Box basis="3/4" direction="row-responsive" justify="around" height="auto">
+            <Box pad="xsmall" basis="medium">
               <LabelText>Line Width</LabelText>
               <RangeInput
                 value={plotConfig.lineWidth}
@@ -153,7 +153,7 @@ const App = () => {
                 max={400}
               />
             </Box>
-            <Box pad="xsmall" basis="small">
+            <Box pad="xsmall" basis="medium">
               <LabelText>Wavelength</LabelText>
               <RangeInput
                 value={plotConfig.wavelength}
@@ -166,7 +166,7 @@ const App = () => {
                 min={0}
               />
             </Box>
-            <Box pad="xsmall" basis="small">
+            <Box pad="xsmall" basis="medium">
               <LabelText>Amplitude</LabelText>
 
               <RangeInput
@@ -181,7 +181,7 @@ const App = () => {
                 max={150}
               />
             </Box>
-            <Box pad="xsmall" basis="small">
+            <Box pad="xsmall" basis="medium">
               <LabelText>Bar Gap</LabelText>
 
               <RangeInput
@@ -196,7 +196,7 @@ const App = () => {
                 max={parseInt(plotConfig.lineWidth / 10)}
               />
             </Box>
-            <Box pad="xsmall" basis="small">
+            <Box pad="xsmall" basis="medium">
               <LabelText>Shift</LabelText>
 
               <Stack>
