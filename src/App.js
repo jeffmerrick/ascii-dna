@@ -137,8 +137,8 @@ const App = () => {
   return (
     <Grommet theme={theme} full>
       <Box background="black" pad="medium" fill>
-        <Box direction="row-responsive">
-          <Box basis="3/4" direction="row-responsive" justify="around" height="auto">
+        <Box direction="row-responsive" style={{ maxHeight: '300px' }}>
+          <Box basis="3/4" direction="row-responsive" justify="around">
             <Box pad="xsmall" basis="medium">
               <LabelText>Line Width</LabelText>
               <RangeInput
@@ -200,7 +200,7 @@ const App = () => {
               <LabelText>Shift</LabelText>
 
               <Stack>
-                <Box height="14px" width="medium"></Box>
+                <Box height="14px" width="medium" />
                 <RangeSelector
                   direction="horizontal"
                   invert={false}
