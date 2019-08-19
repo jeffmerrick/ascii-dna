@@ -1,6 +1,16 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Grommet, Anchor, Box, Stack, TextInput, RangeInput, RangeSelector, base } from 'grommet'
+import {
+  Grommet,
+  Anchor,
+  Box,
+  Stack,
+  TextInput,
+  Text,
+  RangeInput,
+  RangeSelector,
+  base
+} from 'grommet'
 
 const xMax = 300
 const yMax = 100
@@ -101,12 +111,20 @@ const App = () => {
     }
   }
 
-  const LabelText = styled.label`
+  const AllCapsStyles = `
     font-size: 12px;
     letter-spacing: 1px;
     text-transform: uppercase;
     margin-bottom: 8px;
     margin-bottom: auto;
+  `
+
+  const LabelText = styled.label`
+    ${AllCapsStyles}
+  `
+
+  const CapsText = styled(Text)`
+    ${AllCapsStyles}
   `
 
   const [plotConfig, setPlotConfig] = useState({
@@ -302,18 +320,27 @@ const App = () => {
           <Plot {...plotConfig} />
         </Box>
 
-        <Box align="center">
-          <LabelText>
+        <Box justify="between" direction="row">
+          <CapsText>
             Adapted by{' '}
-            <Anchor href="https://wireform.io" rel="noopener">
+            <Anchor href="https://wireform.io" rel="noopener" target="_blank">
               Jeff
             </Anchor>{' '}
             from the original{' '}
-            <Anchor href="http://users.fred.net/tds/lab/delila/asciidna.html" rel="noopener">
+            <Anchor
+              href="http://users.fred.net/tds/lab/delila/asciidna.html"
+              rel="noopener"
+              target="_blank"
+            >
               Delila ASCII DNA
             </Anchor>{' '}
             by Thomas D. Schneider
-          </LabelText>
+          </CapsText>
+          <CapsText>
+            <Anchor href="https://github.com/jeffmerrick/ascii-dna" rel="noopener" target="_blank">
+              Github
+            </Anchor>
+          </CapsText>
         </Box>
       </Box>
     </Grommet>
