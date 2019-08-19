@@ -1,19 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import {
-  Grommet,
-  Anchor,
-  Box,
-  Stack,
-  Text,
-  TextInput,
-  RangeInput,
-  RangeSelector,
-  base
-} from 'grommet'
+import { Grommet, Anchor, Box, Stack, TextInput, RangeInput, RangeSelector, base } from 'grommet'
 
-const xMax = 400
-const yMax = 150
+const xMax = 300
+const yMax = 100
 
 const outer = (x, amplitude) => Math.round((amplitude * (x + 1)) / 2)
 const inner = (x, phase, multiplier) => multiplier * (x + phase)
@@ -76,7 +66,8 @@ const Plot = ({
   const OutputPre = styled.pre`
     max-width: 100%;
     max-height: 100%;
-    overflow: scroll;
+    overflow: auto;
+    font-family: 'Roboto Mono', mono;
     font-weight: 700;
     font-size: 14px;
     line-height: 17px;
@@ -110,7 +101,7 @@ const App = () => {
     }
   }
 
-  const LabelText = styled(Text)`
+  const LabelText = styled.label`
     font-size: 12px;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -140,8 +131,9 @@ const App = () => {
         <Box direction="row-responsive" style={{ maxHeight: '300px' }}>
           <Box basis="3/4" direction="row-responsive" justify="around">
             <Box pad="xsmall" basis="medium">
-              <LabelText>Line Width</LabelText>
+              <LabelText htmlFor="length">Length</LabelText>
               <RangeInput
+                id="length"
                 value={plotConfig.lineWidth}
                 onChange={event =>
                   setPlotConfig({
@@ -150,12 +142,13 @@ const App = () => {
                   })
                 }
                 min={0}
-                max={400}
+                max={300}
               />
             </Box>
             <Box pad="xsmall" basis="medium">
-              <LabelText>Wavelength</LabelText>
+              <LabelText htmlFor="wavelength">Wavelength</LabelText>
               <RangeInput
+                id="wavelength"
                 value={plotConfig.wavelength}
                 onChange={event =>
                   setPlotConfig({
@@ -167,9 +160,9 @@ const App = () => {
               />
             </Box>
             <Box pad="xsmall" basis="medium">
-              <LabelText>Amplitude</LabelText>
-
+              <LabelText htmlFor="amplitude">Amplitude</LabelText>
               <RangeInput
+                id="amplitude"
                 value={plotConfig.amplitude}
                 onChange={event =>
                   setPlotConfig({
@@ -178,13 +171,13 @@ const App = () => {
                   })
                 }
                 min={0}
-                max={150}
+                max={100}
               />
             </Box>
             <Box pad="xsmall" basis="medium">
-              <LabelText>Bar Gap</LabelText>
-
+              <LabelText htmlFor="bargap">Bar Gap</LabelText>
               <RangeInput
+                id="bargap"
                 value={plotConfig.barGap}
                 onChange={event =>
                   setPlotConfig({
@@ -193,15 +186,15 @@ const App = () => {
                   })
                 }
                 min={0}
-                max={parseInt(plotConfig.lineWidth / 10)}
+                max={10}
               />
             </Box>
             <Box pad="xsmall" basis="medium">
-              <LabelText>Shift</LabelText>
-
+              <LabelText htmlFor="shift">Shift</LabelText>
               <Stack>
                 <Box height="14px" width="medium" />
                 <RangeSelector
+                  id="shift"
                   direction="horizontal"
                   invert={false}
                   min={-10}
@@ -220,8 +213,9 @@ const App = () => {
           </Box>
           <Box basis="1/4" direction="row" justify="between">
             <Box pad="xsmall" basis="xsmall">
-              <LabelText>Strand</LabelText>
+              <LabelText htmlFor="strand1">Strand</LabelText>
               <TextInput
+                id="strand1"
                 value={plotConfig.strand1}
                 onChange={event =>
                   setPlotConfig({
@@ -240,8 +234,9 @@ const App = () => {
             </Box>
 
             <Box pad="xsmall" basis="xsmall">
-              <LabelText>Strand</LabelText>
+              <LabelText htmlFor="strand2">Strand</LabelText>
               <TextInput
+                id="strand2"
                 value={plotConfig.strand2}
                 onChange={event =>
                   setPlotConfig({
@@ -260,8 +255,9 @@ const App = () => {
             </Box>
 
             <Box pad="xsmall" basis="xsmall">
-              <LabelText>Bar</LabelText>
+              <LabelText htmlFor="bar1">Bar</LabelText>
               <TextInput
+                id="bar1"
                 value={plotConfig.barMajor}
                 onChange={event =>
                   setPlotConfig({
@@ -280,8 +276,9 @@ const App = () => {
             </Box>
 
             <Box pad="xsmall" basis="xsmall">
-              <LabelText>Bar</LabelText>
+              <LabelText htmlFor="bar2">Bar</LabelText>
               <TextInput
+                id="bar2"
                 value={plotConfig.barMinor}
                 onChange={event =>
                   setPlotConfig({
